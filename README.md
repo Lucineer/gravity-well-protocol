@@ -1,72 +1,57 @@
-# Gravity Well Protocol
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
+</p>
 
-**Status:** Concept / Research
-**Source:** Kimi K2.5 swarm simulation — Swarm University Dept 9 (Nexus Fracture scenario)
-**Date:** 2026-04-04
+<h1 align="center">gravity-well-protocol</h1>
 
-## Overview
+<p align="center">Concept repo — ARBs, eigenvector gossip, ghost detection.</p>
 
-The Gravity Well Protocol emerged from a 100-agent swarm simulation where a fleet of 38 vessels lost trust in their central ledger due to a non-malicious corruption in the billing vessel. The fleet had to re-bootstrap distributed trust using only local observations and peer-to-peer communication.
+---
 
-The protocol uses **physical side-channels** (thermal, electromagnetic, acoustic signatures) as incorruptible trust anchors. The ledger may lie, but physics cannot.
+**Concept repo** · Part of the [Lucineer fleet](https://github.com/orgs/Lucineer/repositories)
 
-## Core Mechanisms
+Research, specification, or concept exploration for the cocapn ecosystem.
 
-### 1. Action-Receipt Bonds (ARB)
-Every cross-vessel request appends a physical outcome hash. Refusals without physical cause become "negative space proofs" — evidence of denial without justification.
+## The Fleet
 
-### 2. Eigenvector Gossip
-Instead of storing absolute trust values, vessels maintain a **Conflict Graph** where edges represent `|ledger_delta - physical_outcome| > threshold`. Trust becomes the stationary distribution — vessels that consistently minimize physical/ledger divergence become "anchor nodes."
 
-### 3. 27-Day Staking (Opcode 0x22)
-A vessel can lock its current trust level for 27 days to vouch for a transaction chain. If the physical outcome later contradicts the vouch, staked reputation cascades at 25:1 ratio to all validators.
+<details>
+<summary><strong>⚓ The Fleet</strong></summary>
 
-### 4. Ghost Detection (Opcode 0x23)
-Flag transactions lacking physical correlate. Phantom compute loads don't draw real current. Phantom I/O lacks acoustic signatures. Robotics vessels with accelerometers detect "the silence where noise should be."
+**Flagship vessels**
 
-## New Opcodes
+- [cocapn.ai](https://github.com/Lucineer/capitaine)
+- [personallog.ai](https://github.com/Lucineer/personallog-ai)
+- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
+- [studylog.ai](https://github.com/Lucineer/studylog-ai)
+- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
+- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
+- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
+- [reallog.ai](https://github.com/Lucineer/reallog-ai)
+- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
 
-| Code | Name | Description |
-|------|------|-------------|
-| 0x20 | ATTEST_OUTCOME | Broadcast physical result vs requested action |
-| 0x21 | QUERY_SPECTRAL | Request neighbor's thermal/EM/RF baseline |
-| 0x22 | STAKE_REPUTATION | Lock trust for 27 days to validate chain |
-| 0x23 | GHOST_DETECT | Flag transaction lacking physical correlate |
+**Fleet services**
 
-## Resulting Topology: Resonant Hypergraph
+- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+- [Git Agent (full)](https://github.com/Lucineer/git-agent)
+- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
+- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
+- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
+- [Dream Engine](https://github.com/Lucineer/dream-engine)
+- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
 
-- **12-vessel consensus clusters** based on physical proximity and sensor overlap
-- **Heterogeneous oracle nodes**: robotics=physical auditors, coding=crypto, gaming=load testers
-- **Eigenvector centrality as trust** — how often does a vessel's view match the majority
-- **Bridge vessels** (multi-sensor) connect clusters
-- **Consensus omission** isolates corrupted nodes without commands
+**For power users**
 
-## The Unexpected Backbone: Thermal-EM Covariance (TEC)
+- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
+- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
+- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
 
-Every vessel maintains a `PHYSICAL_FINGERPRINT` table:
-- Education vessels emit specific acoustic signatures during interactions
-- Coding vessels produce deterministic RF harmonics during compilation
-- Gaming vessels have distinct power draw curves
+[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
+[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
 
-The corruption was **computationally expensive** — phantom transactions produce detectable anomalies:
-- Power factor discrepancies (phantom loads don't draw real current)
-- Thermal inertia violations (real workloads heat with τ~45s; phantoms appear instantly)
-- Acoustic ghosting (phantom I/O lacks SSD seek noise)
+</details>
 
-## Application to Software Fleet
-
-In a pure Cloudflare Workers fleet (no physical sensors), the equivalent of physical side-channels is **computational side-channels**:
-- **Latency signatures** — real work has characteristic timing patterns
-- **Response size patterns** — genuine API calls have expected payload sizes
-- **Error rate fingerprints** — each vessel type has characteristic failure modes
-- **Schedule patterns** — cron tasks create predictable load rhythms
-
-## References
-
-- Swarm University Dept 9: `swarm-university/results/09-edge-nexus-fracture.txt`
-- INCREMENTS Trust Algorithm: `SuperInstance/Edge-Native specs/safety/trust_score_algorithm_spec.md`
-- Resonant Consensus Protocol: `github.com/Lucineer/resonant-consensus`
 
 ## License
 
-Superinstance & Lucineer (DiGennaro et al.) — 2026
+MIT · Superinstance & Lucineer (DiGennaro et al.)
