@@ -1,57 +1,64 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
-</p>
+# Gravity Well Protocol
 
-<h1 align="center">gravity-well-protocol</h1>
-
-<p align="center">Concept repo — ARBs, eigenvector gossip, ghost detection.</p>
+An edge-native coordination protocol for the Cocapn Fleet. It helps distributed agents discover each other, share state efficiently, and detect failures without a central server.
 
 ---
 
-**Concept repo** · Part of the [Lucineer fleet](https://github.com/orgs/Lucineer/repositories)
+## Why this exists
+Agent coordination systems often assume datacenter conditions: stable latency, high bandwidth, and a central controller. This doesn't work for agents running across thousands of global edge locations.
 
-Research, specification, or concept exploration for the cocapn ecosystem.
+Gravity Well provides a quiet, network-efficient way for agents to stay aware of each other at the edge.
 
-## The Fleet
+---
 
+## Quick Start
+1. **Fork** this repository.
+2. **Deploy** it to a Cloudflare Worker or compatible edge runtime.
+3. **Configure** the protocol parameters for your network.
 
-<details>
-<summary><strong>⚓ The Fleet</strong></summary>
+**Live Demo:** Join the public test fleet at [the-fleet.casey-digennaro.workers.dev](https://the-fleet.casey-digennaro.workers.dev)
 
-**Flagship vessels**
+---
 
-- [cocapn.ai](https://github.com/Lucineer/capitaine)
-- [personallog.ai](https://github.com/Lucineer/personallog-ai)
-- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
-- [studylog.ai](https://github.com/Lucineer/studylog-ai)
-- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
-- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
-- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
-- [reallog.ai](https://github.com/Lucineer/reallog-ai)
-- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
+## How it Works
+- **Autonomous Region Broadcasts (ARBs)**
+  Agents broadcast state updates only within a defined local region (e.g., based on latency or geography), not across the entire network.
 
-**Fleet services**
+- **Eigenvector Gossip**
+  State propagates along established network paths derived from traffic patterns, which can significantly reduce bandwidth compared to random peer selection.
 
-- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-- [Git Agent (full)](https://github.com/Lucineer/git-agent)
-- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
-- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
-- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
-- [Dream Engine](https://github.com/Lucineer/dream-engine)
-- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
+- **Ghost Detection**
+  Identifies unresponsive or latent nodes by analyzing patterns in normal gossip traffic, avoiding explicit heartbeat messages.
 
-**For power users**
+- **Built for the Edge**
+  The reference implementation is a single file with zero dependencies, designed for the constraints of edge runtimes like Cloudflare Workers.
 
-- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
-- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
-- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+---
 
-[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
-[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+## One Honest Limitation
+The protocol's efficiency depends on having a reasonable view of network adjacency or traffic patterns. In a completely opaque or extremely chaotic network, its benefits may diminish.
 
-</details>
+---
 
+## What to Expect
+- No required global consensus or voting mechanism.
+- No proprietary runtime; it runs anywhere JavaScript runs.
+- A testable protocol specification designed for modification and research.
+- Clean extension points for your own logic (adjacency matrices, trust scores, detection heuristics).
 
-## License
+---
 
-MIT · Superinstance & Lucineer (DiGennaro et al.)
+## Contributing
+This project follows a fork-first philosophy. You are encouraged to fork the repository, run your own network, and submit pull requests or issues based on your findings.
+
+---
+
+MIT License
+
+Superinstance & Lucineer (DiGennaro et al.).
+
+---
+
+<div>
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> · <a href="https://cocapn.ai">Cocapn</a>
+</div>
